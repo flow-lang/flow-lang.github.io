@@ -49,5 +49,12 @@ export default {
     */
     extend(config, ctx) {
     }
+  },
+  /*
+  ** Dev server configuration
+  */
+  server: {
+    port: 8000,
+    host: '0.0.0.0'
   }
 }
