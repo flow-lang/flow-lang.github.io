@@ -1,19 +1,20 @@
 {
   "name": "flow-lang.github.io",
   "version": "1.0.0",
-  "description": "Documention for the Flow programming language and framework.",
-  "main": "index.js",
+  "description": "Documentation for the Flow language and framework.",
+  "author": "Andrew Thompson",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/flow-lang/flow-lang.github.io.git"
+  "dependencies": {
+    "nuxt": "^2.0.0"
   },
-  "author": "Andrew Thompson <andrew.thompson@qmul.ac.uk>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/flow-lang/flow-lang.github.io/issues"
-  },
-  "homepage": "https://github.com/flow-lang/flow-lang.github.io#readme"
+  "devDependencies": {
+    "tailwindcss": "^1.0.0",
+    "nodemon": "^1.18.9"
+  }
 }
