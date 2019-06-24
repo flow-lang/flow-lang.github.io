@@ -8,13 +8,15 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "deploy": "push-dir --dir=dist --branch=master --cleanup"
   },
   "dependencies": {
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
-    "tailwindcss": "^1.0.0",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "push-dir": "^0.4.1",
+    "tailwindcss": "^1.0.0"
   }
 }
