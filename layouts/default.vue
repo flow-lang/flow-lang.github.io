@@ -1,6 +1,6 @@
 <template>
-  <div id="app" class="w-full tracking-wider">
-    <header class="{-layout fixed -} {-background bg-indigo-500 -} {-flexbox flex flex-wrap items-center justify-between -} {-spacing mx-auto mt-0 px-20 py-2 -} {-sizing w-full -} {-effects shadow-md -}">
+  <div id="app" class="">
+    <header class="{-layout fixed -} {-background bg-indigo-500 -} {-flexbox flex flex-wrap items-center justify-between -} {-spacing mx-auto mt-0 px-10 lg:px-20 py-2 -} {-sizing w-full -} {-effects shadow-md -}">
       <div class="{-sizing w-12 -}">
         <nuxt-link to="/#" class="{-typography text-gray-900 text-base no-underline font-extrabold text-xl -} {-sizing h-auto max-w-full -}">
           <img src="~/assets/img/square-logo-transparent.png">
@@ -8,7 +8,7 @@
       </div>
     </header>
 
-    <nav class="{-layout container -} {-spacing lg:my-6 mx-auto px-20 -}">
+    <nav class="{-layout container -} {-spacing lg:my-6 mx-auto px-10 lg:px-20 -}">
       <ul>
         <template v-for="(item, i) in links">
           <li v-if="item.type === 'heading'" :key="i" class="{-spacing py-2 mb-2 -}">
@@ -26,12 +26,12 @@
       </ul>
     </nav>
 
-    <main class="{-layout container -} {-typography lg:text-justify -} {-border border-gray-400 border-b lg:border-none -} {-sizing -} {-spacing my-6 mx-auto px-20 -}">
+    <main class="{-layout container -} {-typography lg:text-justify -} {-border border-gray-400 border-b lg:border-none -} {-sizing -} {-spacing my-6 mx-auto px-10 lg:px-20 -}">
       <nuxt />
     </main>
 
     <footer class="{-layout -} {-border border-gray-400 border-t -} {-sizing w-full -}">
-      <div class="{-layout flex flex-wrap -} {-spacing py-8 px-20 -}">
+      <div class="{-layout flex flex-wrap -} {-spacing py-8 px-10 lg:px-20 -}">
         <div class="{-sizing w-full lg:w-1/2 -}">
           <h3 class="{-typography font-bold text-gray-800">About</h3>
           <p class="{-typography text-justify text-sm text-gray-600 -} {-spacing py-4 -}">
@@ -88,7 +88,7 @@
   min-height: 100vh;
   min-height: calc(var(--vh, 1vh) * 100);
   grid-template-areas: "head" "main" "nav" "foot";
-  grid-template-columns: 1fr;
+  grid-template-columns: 100vw;
   grid-template-rows: 64px auto 1fr 64px;
 }
 
