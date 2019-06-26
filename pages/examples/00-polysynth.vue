@@ -3,7 +3,7 @@
     <content-heading>00-polysynth</content-heading>
 
     <div class="{-typography text-right text-indigo-500 hover:text-indigo-800 -} {-spacing my-4 -}">
-      <nuxt-link to="/examples/01-step-seuencer">01-step-seuencer</nuxt-link> »
+      <nuxt-link to="/examples/01-step-sequencer">01-step-sequencer</nuxt-link> »
     </div>
   </div>
 </template>
