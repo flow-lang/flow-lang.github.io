@@ -63,7 +63,7 @@
         { type: 'link', content: 'The Flow Architecture', to: '/the-flow-architecture' },
         { type: 'heading', content: 'Examples' },
         { type: 'link', content: '00-polysynth', to: '/examples/00-polysynth' },
-        { type: 'link', content: '01-step-sequencer', to: '/examples/01-step-seqencer' },
+        { type: 'link', content: '01-step-sequencer', to: '/examples/01-step-sequencer' },
         { type: 'heading', content: 'Beginner\'s Guide' },
         { type: 'link', content: 'Hello World', to: '/guide/hello-world' },
         { type: 'link', content: 'Adding Interaction', to: '/guide/adding-interaction' },
