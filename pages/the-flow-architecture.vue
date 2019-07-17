@@ -9,6 +9,8 @@
       functions (functions without side effects) and a unidirectional data flow.
     </content-text>
 
+    <img class="{-spacing mx-auto py-4 -}" src="~/assets/img/flow-architecture-simple.png"/>
+
     <content-text>
       Data flows in one direction in the MVU architecture. A Model is passed to our
       Views, the audio and view function. The output of these functions is passed to
