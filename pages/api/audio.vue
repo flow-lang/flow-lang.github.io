@@ -2,6 +2,28 @@
   <div>
     <content-heading>Audio</content-heading>
 
+    <!-- Audio.Node --------------------------------------------------->
+    <ref-module anchor="Audio.Node">
+      Audio.Node
+    </ref-module>
+
+    <ref-constructor anchor="Audio.Node_node">
+      Generic Node
+    </ref-constructor>
+
+    <ref-heading anchor="Audio.Node_node_Parameters">
+      Parameters
+    </ref-heading>
+
+    <ref-constructor anchor="Audio.Node_keyed">
+      Keyed Node
+    </ref-constructor>
+
+    <ref-heading anchor="Audio.Node_keyed_Parameters">
+      Parameters
+    </ref-heading>
+
+
     <div class="{-typography text-right text-indigo-500 hover:text-indigo-800 -} {-spacing my-4 -}">
       <nuxt-link to="/api/dom">API: DOM</nuxt-link> »
     </div>
@@ -10,10 +32,14 @@
 
 <script>
   import ContentHeading from '~/components/content/ContentHeading'
-   import ContentSubHeading from '~/components/content/ContentSubHeading'
+  import ContentSubHeading from '~/components/content/ContentSubHeading'
   import ContentText from '~/components/content/ContentText'
   import ContentCode from '~/components/content/ContentCode'
   import ContentNotice from '~/components/content/ContentNotice'
+
+  import RefModule from '~/components/ref/RefModule'
+  import RefConstructor from '~/components/ref/RefConstructor'
+  import RefHeading from '~/components/ref/RefHeading'
 
   export default {
     components: {
@@ -21,7 +47,11 @@
       ContentSubHeading,
       ContentText,
       ContentCode,
-      ContentNotice
+      ContentNotice,
+      //
+      RefModule,
+      RefConstructor,
+      RefHeading
     }
   }
 </script>
