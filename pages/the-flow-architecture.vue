@@ -129,7 +129,7 @@
 <script>
   import ContentHeading from '~/components/content/ContentHeading'
   import ContentSubHeading from '~/components/content/ContentSubHeading'
-  import ContentText from '~/components/content/ContentText'
+  import ContentSection from '~/components/content/ContentSection'
   import ContentCode from '~/components/content/ContentCode'
   import ContentNotice from '~/components/content/ContentNotice'
 
@@ -137,7 +137,7 @@
     components: {
       ContentHeading,
       ContentSubHeading,
-      ContentText,
+      ContentSection,
       ContentCode,
       ContentNotice
     }
