@@ -1,4 +1,3 @@
-
 export default {
   mode: 'spa',
   /*
@@ -29,6 +28,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/codemirror.js'
   ],
   /*
   ** Nuxt.js modules
@@ -47,8 +47,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
-    }
+    extend(config, ctx) {},
   },
   /*
   ** Dev server configuration
