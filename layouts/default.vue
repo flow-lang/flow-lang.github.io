@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="">
-    <header class="{-layout fixed -} {-background bg-indigo-500 -} {-flexbox flex flex-wrap items-center justify-between -} {-spacing mx-auto mt-0 px-10 lg:px-20 py-2 -} {-sizing w-full -} {-effects shadow-md -}">
+    <header class="{-layout fixed z-10 -} {-background bg-indigo-500 -} {-flexbox flex flex-wrap items-center justify-between -} {-spacing mx-auto mt-0 px-10 lg:px-20 py-2 -} {-sizing w-full -} {-effects shadow-md -}">
       <div class="{-sizing w-12 -}">
         <nuxt-link to="/#" class="{-typography text-gray-900 text-base no-underline font-extrabold text-xl -} {-sizing h-auto max-w-full -}">
           <img src="~/assets/img/square-logo-transparent.png">
@@ -67,6 +67,7 @@
         { type: 'heading', content: 'Beginner\'s Guide' },
         { type: 'link', content: 'Hello World', to: '/guide/hello-world' },
         { type: 'link', content: 'Adding Interaction', to: '/guide/adding-interaction' },
+        { type: 'link', content: 'Playground', to: '/guide/playground' },
         { type: 'heading', content: 'Advanced Concepts' },
         { type: 'link', content: 'Comparisons to Other Frameworks', to: '/advanced/comparison' },
         { type: 'link', content: 'Routing', to: '/advanced/routing' },
