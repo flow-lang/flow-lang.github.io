@@ -1,25 +1,5 @@
 import { Program, DOM, Audio, Music } from '@flow-lang/framework'
-
-// All this is necessary to be able to say "remove all event listeners of type
-// x". 
-const _listeners = [];
-window.addEventListenerBase = window.addEventListener;
-window.addEventListener = function (type, listener) {
-  _listeners.push({ type, listener })
-  window.addEventListenerBase(type, listener)
-}
-window.removeEventListeners = function (targetType) {
-  for(let index = 0; index != _listeners.length; index++) {
-    const item = _listeners[index];
-
-    const listener = item.listener;
-    const type = item.type
-
-    if(type == targetType) {
-      window.removeEventListener(type, listener);
-    }
-  }
-}
+import eventReset from '~/assets/js/event-reset'
 
 let context = new AudioContext()
 let root = null
@@ -42,8 +22,7 @@ export function reset (selector, code) {
     // the app was destroyed, and I can't work out why that is.
     if (app) {
       app.destroy()
-
-      for (event in DOM.Event.$events) window.removeEventListeners(event)
+      eventReset()
     }
 
     // Close the audio context to stop anything from continuing to play
@@ -61,6 +40,13 @@ export function reset (selector, code) {
       // Start it up!
       app.start({ context, root, flags: { debug: true } })
     })
+  }
+}
+
+export function destroy () {
+  if (app) {
+    app.destroy()
+    eventReset()
   }
 }
 

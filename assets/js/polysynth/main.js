@@ -1,4 +1,7 @@
 import { Program, DOM, Audio, Music } from '@flow-lang/framework'
+import eventReset from '~/assets/js/event-reset'
+
+let App
 
 // Init ------------------------------------------------------------------------
 function init (flags) {
@@ -113,19 +116,24 @@ function listen (model) {
 }
 
 // App -------------------------------------------------------------------------
-const App = Program.instrument(
-  init, update, audio, view, listen
-)
-
-App.use(DOM.Event)
-App.use(Audio.Event)
-
 export default {
   start (selector) {
+    App = Program.instrument(
+      init, update, audio, view, listen
+    )
+    
+    App.use(DOM.Event)
+    App.use(Audio.Event)
+
     App.start({
       root: document.querySelector( selector ),
       context: new AudioContext(),
       flags: {}
     })
+  },
+
+  destroy () {
+    App.destroy()
+    eventReset()
   }
 }

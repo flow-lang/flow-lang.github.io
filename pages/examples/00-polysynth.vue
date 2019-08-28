@@ -206,8 +206,13 @@
       ContentCode,
       ContentNotice
     },
+
     mounted () {
       FlowApp.start('#flow')
+    },
+
+    beforeDestroy () {
+      FlowApp.destroy()
     }
   }
 </script>

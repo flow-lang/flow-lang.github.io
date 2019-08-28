@@ -75,6 +75,10 @@
 
     mounted () {
       this.eval()
+    },
+
+    beforeDestroy () {
+      FlowPlayground.destroy()
     }
   }
 </script>
