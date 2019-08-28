@@ -12,14 +12,14 @@
     "deploy": "push-dir --dir=dist --branch=master --cleanup --force"
   },
   "dependencies": {
-    "@flow-lang/framework": "^1.0.0",
+    "@flow-lang/framework": "^1.0.3",
     "codemirror": "^5.48.4",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.9.1",
     "vue-codemirror": "^4.0.6"
   },
   "devDependencies": {
     "nodemon": "^1.18.9",
     "push-dir": "^0.4.1",
-    "tailwindcss": "^1.0.0"
+    "tailwindcss": "^1.1.2"
   }
 }
