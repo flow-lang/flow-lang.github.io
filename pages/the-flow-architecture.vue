@@ -3,39 +3,39 @@
     <content-heading>The Flow Architecture</content-heading>
 
     <content-sub-heading>Model-View-Update</content-sub-heading>
-    <content-text>
+    <content-section>
       Understanding the Flow architecture is essential for writing excellent applications.
       At the heart of Flow is a Model-View-Update architecture that focuses on pure
       functions (functions without side effects) and a unidirectional data flow.
-    </content-text>
+    </content-section>
 
     <img class="{-spacing mx-auto py-4 -}" src="~/assets/img/flow-architecture-simple.png"/>
 
-    <content-text>
+    <content-section>
       Data flows in one direction in the MVU architecture. A Model is passed to our
       Views, the audio and view function. The output of these functions is passed to
       the runtime to render our HTML and Web Audio elements. The runtime then produces
       Actions which as passed into the updae function to create a new Model, and so
       the cycle continues.
-    </content-text>
+    </content-section>
 
     <content-sub-heading>Model</content-sub-heading>
-    <content-text>
+    <content-section>
       In Flow, the Model represents the entire state of an application. It can be 
       as complex or as simple as you need. For a simple counter application the 
       Model could just be a single number:
-    </content-text>
+    </content-section>
 
     <content-code>
       const Model = 0
     </content-code>
 
     <content-sub-heading>View</content-sub-heading>
-    <content-text>
+    <content-section>
       When talking about Views, we traditionally mean the part of our application 
       that is displayed to the user. Let's look at how we might display our model 
       to the user:
-    </content-text>
+    </content-section>
 
     <content-code>
       import { div, button, text } from "flow/dom/element"
@@ -50,32 +50,32 @@
       }
     </content-code>
 
-    <content-text>
+    <content-section>
       The view function takes the current model and returns some HTML. DOM elements 
       are created with function calls like div and button and all have a uniform 
       API. The first argument is an array of attributes like id or className, and 
       the second is an array of child elements.
-    </content-text>
+    </content-section>
 
-    <content-text>
+    <content-section>
       It's important to note that functions like div and button don't actually 
       create real HTML. Instead, they produce pure data that the runtime can use
       to construct the real thing when it needs to.
-    </content-text>
+    </content-section>
 
     <content-sub-heading>Audio</content-sub-heading>
-    <content-text>
+    <content-section>
       In Flow, we think the visual display is only half the story. Because both 
       the visual and audio elements of our application are created from the same 
       model, we think it's fair to say the audio output is just as much a "view" 
       into the model as the HTML.
-    </content-text>
+    </content-section>
 
-    <content-text>
+    <content-section>
       Fortunately, the way we create audio nodes in Flow is very similar to the 
       way we create HTML elements. Let's use the model to control the gain of an 
       oscillator:
-    </content-text>
+    </content-section>
 
     <content-code>
       import { oscillator, gain, dac } from "flow/audio/node"
@@ -90,23 +90,23 @@
       }
     </content-code>
 
-    <content-text>
+    <content-section>
       As with our HTML functions, these audio nodes are virtual representations 
       of the real thing.
-    </content-text>
+    </content-section>
 
     <content-sub-heading>Update</content-sub-heading>
-    <content-text>
+    <content-section>
       There is only one way to change the Model in a Flow application, and that 
       is through the aptly named update function. To update the Model in a 
       controlled and predictable manner, we tend to switch over actions: strings 
       that describe what to update.
-    </content-text>
+    </content-section>
 
-    <content-text>
+    <content-section>
       For our simple counter example, we might have two actions to "Increment" 
       and "Decrement" the counter:
-    </content-text>
+    </content-section>
 
     <content-code>
       const update ([ action ], model) => {
