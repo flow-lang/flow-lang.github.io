@@ -30,7 +30,7 @@
     </content-section>
 
     <div class="{-typography text-right text-indigo-500 hover:text-indigo-800 -} {-spacing my-4 -}">
-      <nuxt-link to="/guide/adding-interaction">Adding Interactiong</nuxt-link> »
+      <nuxt-link to="/guide/adding-interaction">Adding Interaction</nuxt-link> »
     </div>
   </div>
 </template>
