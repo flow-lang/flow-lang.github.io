@@ -1,4 +1,4 @@
-import { Program, DOM, Audio, Music } from '@flow-lang/framework'
+import { Program, Action, Effect, DOM, Audio, Music } from '@flow-lang/framework'
 import eventReset from '~/assets/js/event-reset'
 
 let App
@@ -103,10 +103,7 @@ function view (model) {
 }
 
 // Listen ----------------------------------------------------------------------
-const onKeyPress = action => e => ({
-  action,
-  payload: { key: e.key.toLowerCase() }
-})
+const onKeyPress = action => e => Action(action, { key: e.key.toLowerCase() })
 
 function listen (model) {
   return [
