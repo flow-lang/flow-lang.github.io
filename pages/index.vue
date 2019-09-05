@@ -72,24 +72,23 @@
       audio, view, and listen come together to form a complete application, but for
       now here is a typical counter app with an audio twist.
       <content-code>
-        import { Program } from "flow"
-        import { Element, Attribute, Event } from "flow/dom"
-        import { Node, Property } from "flow/audio"
+        import { Program, Effect, Action, Audio, DOM } from "@flow/framework"
 
-        const App = Program.instrument({
-          init: _ => 1,
-          update,
-          audio,
-          view,
-          listen
-        })
+        const { Element, Attribute, Event } = DOM
+        const { Node, Property } = Audio
 
-        function update ([ action ], model) {
+        const App = Program.instrument(init, update, audio, view, listen)
+
+        function init () {
+          return 1
+        }
+
+        function update ({ action }, model) {
           switch (action) {
             case "Increment":
-              return model + 1
+              return [model + 1, Effect.none()]
             case "Decrement":
-              return model - 1
+              return [model - 1, Effect.none()]
           }
         }
 
@@ -111,8 +110,8 @@
 
         function listen (model) {
           return [
-            Event.click(".inc", _ => [ "Increment" ]),
-            Event.click(".dec", _ => [ "Decrement" ])
+            Event.click(".inc", _ => Action("Increment")),
+            Event.click(".dec", _ => Action("Decrement"))
           ]
         }
 

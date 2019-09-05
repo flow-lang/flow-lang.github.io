@@ -38,8 +38,9 @@
     </content-section>
 
     <content-code>
-      import { div, button, text } from "flow/dom/element"
-      import { className } from "flow/dom/attribute"
+      import { DOM } from "@flow/framework"
+      const { div, button, text } = DOM.Element
+      const { className } = DOM.Attribute
 
       const view = model => {
         return div([], [
@@ -78,8 +79,9 @@
     </content-section>
 
     <content-code>
-      import { oscillator, gain, dac } from "flow/audio/node"
-      import { gainAmount } from "flow/audio/property"
+      import { Audio } from '@flow/framework'
+      const { oscillator, gain, dac } = Audio.Node
+      const { gain: gainAmount } = Audio.Property
 
       const audio = model => {
         return oscillator([], [
@@ -109,7 +111,7 @@
     </content-section>
 
     <content-code>
-      const update ([ action ], model) => {
+      const update ({ action }, model) => {
         switch (action) {
           case "Increment":
             return [model + 1]
