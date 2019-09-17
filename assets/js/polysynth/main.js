@@ -1,12 +1,14 @@
 import { Program, Action, Effect, DOM, Audio, Music } from '@flow-lang/framework'
 import eventReset from '~/assets/js/event-reset'
+import resumeContext from '~/assets/js/resume-context'
 
-let App
+// Vendor prefix for safari and webkit browsers
+const AudioContext = window.AudioContext || window.webkitAudioContext
 
 // Init ------------------------------------------------------------------------
 function init (flags) {
   const note = (key, name) => ({
-    key, 
+    key,
     freq: Music.Note.ntof(name),
     on: false
   })
@@ -22,13 +24,13 @@ function init (flags) {
       note('u', 'C5'),
       note('i', 'D5'),
       note('o', 'E5'),
-      note('p', 'G5'),
+      note('p', 'G5')
     ]
   }
 }
 
 // Update ----------------------------------------------------------------------
-const NoteOn  = 'note-on'
+const NoteOn = 'note-on'
 const NoteOff = 'note-off'
 
 function update ({ action, payload }, model) {
@@ -62,12 +64,12 @@ function update ({ action, payload }, model) {
 // Audio -----------------------------------------------------------------------
 const { Node, Property } = Audio
 const voice = ({ on, freq }) => {
-  const vol   = Property.gain(on ? 0.1 : 0)
+  const vol = Property.gain(on ? 0.1 : 0)
   const pitch = Property.frequency(freq)
 
   return (
-    Node.oscillator([ pitch ], [
-      Node.gain([ vol ], [
+    Node.oscillator([pitch], [
+      Node.gain([vol], [
         Node.dac()
       ])
     ])
@@ -87,16 +89,16 @@ const note = ({ key, freq, on }) => {
   `
 
   return (
-    Element.div([ Attribute.className(classes) ], [
-      Element.p([], [ key ]),
-      Element.p([], [ Music.Note.fton(freq) ])
+    Element.div([Attribute.className(classes)], [
+      Element.p([], [key]),
+      Element.p([], [Music.Note.fton(freq)])
     ])
   )
 }
 
 function view (model) {
   return (
-    Element.div([ Attribute.className('flex') ],
+    Element.div([Attribute.className('flex')],
       model.notes.map(note)
     )
   )
@@ -113,24 +115,33 @@ function listen (model) {
 }
 
 // App -------------------------------------------------------------------------
+let App
+let context
+
 export default {
   start (selector) {
+    context = new AudioContext()
+    resumeContext(context)
+
     App = Program.instrument(
       init, update, audio, view, listen
     )
-    
+
     App.use(DOM.Event)
     App.use(Audio.Event)
 
     App.start({
-      root: document.querySelector( selector ),
-      context: new AudioContext(),
+      root: document.querySelector(selector),
+      context,
       flags: {}
     })
+
+    console.log(context)
   },
 
   destroy () {
     App.destroy()
     eventReset()
+    context.close()
   }
 }

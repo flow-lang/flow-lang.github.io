@@ -1,14 +1,20 @@
 import { Program, DOM, Audio, Music } from '@flow-lang/framework'
 import eventReset from '~/assets/js/event-reset'
+import resumeContext from '~/assets/js/resume-context'
+
+// Vendor prefix for safari and webkit browsers
+const AudioContext = window.AudioContext || window.webkitAudioContext
 
 let context = new AudioContext()
 let root = null
 let app = null
 
+resumeContext(context)
+
 export function reset (selector, code) {
   const $flow__context = { DOM, Audio, Music }
   const contextualised =
-    code.replace(/function (\w+)/g, '$flow__context.$1 = function $1') 
+    code.replace(/function (\w+)/g, '$flow__context.$1 = function $1')
       .replace(/DOM/g, '$flow__context.DOM')
       .replace(/Audio/g, '$flow__context.Audio')
       .replace(/Music/g, '$flow__context.Music')
@@ -16,7 +22,7 @@ export function reset (selector, code) {
   eval(contextualised)
 
   const { init, update, audio, view, listen } = $flow__context
-  if (init, update, audio, view, listen) {
+  if (init && update && audio && view && listen) {
     // Make double dip damn sure that all the event listeners are removed from
     // the window. There was a bug where listeners would continue firing after
     // the app was destroyed, and I can't work out why that is.
@@ -29,6 +35,7 @@ export function reset (selector, code) {
     context.close().then(() => {
       // Create a new one
       context = new AudioContext()
+      resumeContext(context)
       root = document.querySelector(selector)
       // Create a new program
       app = Program.instrument(init, update, audio, view, listen)
@@ -47,6 +54,7 @@ export function destroy () {
   if (app) {
     app.destroy()
     eventReset()
+    context.close()
   }
 }
 
